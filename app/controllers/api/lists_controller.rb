@@ -14,12 +14,13 @@ class Api::ListsController < ApplicationController
         render json: list.errors, status: :unprocessable_entity
       end
     end
-def update
+
+  def update
       list = List.find(params[:id])
       if list.update(list_params)
         render json: list
       else
-        render json: list.errors, status: :unprocessable_entity
+         render json: list.errors, status: :unprocessable_entity
       end
     end
 
@@ -34,6 +35,5 @@ def update
     def list_params
       params.require(:list).permit(:title)
     end
-  end
 end
 
